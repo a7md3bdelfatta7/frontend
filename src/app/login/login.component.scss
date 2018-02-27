@@ -1,0 +1,69 @@
+/**
+ * @license
+ * Copyright Akveo. All Rights Reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ */
+
+ @mixin nb-auth-block-theme() {
+  nb-auth-block {
+
+    .form-text a {
+      color: nb-theme(color-fg);
+    }
+
+    .accept-group {
+      nb-checkbox .custom-control-description {
+        color: nb-theme(color-fg);
+      }
+
+      a {
+        color: nb-theme(accept-group-link-color);
+      }
+    }
+
+    .socials a {
+      &::before {
+        color: nb-theme(socials-color);
+      }
+
+      &:hover::before {
+        color: nb-theme(socials-hover-color);
+      }
+    }
+  }
+}
+
+:host /deep/ {
+  $auth-layout-padding: 2.5rem;
+
+  nb-layout .layout .layout-container .content .columns nb-layout-column {
+    padding: $auth-layout-padding;
+  }
+
+  nb-card {
+    height: calc(100vh - 2 * #{$auth-layout-padding});
+  }
+
+  nb-card {
+    margin: 0;
+  }
+  .flex-centered {
+      margin: auto;
+  }
+  nb-card-body {
+    display: flex;
+  }
+
+  // TODO rewrite when develop responsive
+  @media (max-width: 550px) {
+    /deep/ nb-layout .layout .layout-container .content .columns nb-layout-column {
+      padding: 0;
+    }
+
+    nb-card {
+      border-radius: 0;
+      height: 100vh;
+    }
+  }
+
+}
