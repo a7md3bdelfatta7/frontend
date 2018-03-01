@@ -1,5 +1,5 @@
 import { NbMenuItem } from '@nebular/theme';
-
+/*
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
@@ -141,6 +141,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+    {
+    title: 'visit',
+    icon: 'nb-tables',
+    children: [
+      {
+        title: 'Add Visit',
+        link: '/pages/visits/add-visit',
+      },
+    ],
+  },
   {
     title: 'Auth',
     icon: 'nb-locked',
@@ -160,6 +170,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Reset Password',
         link: '/auth/reset-password',
+      },
+    ],
+  },
+];
+
+*/
+export const MENU_ITEMS: NbMenuItem[] = [
+    {
+    title: 'visit',
+    icon: 'nb-tables',
+    children: [
+      {
+        title: 'Add Visit',
+        link: '/pages/visits/add-visit',
       },
     ],
   },

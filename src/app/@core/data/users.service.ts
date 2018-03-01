@@ -9,8 +9,8 @@ let counter = 0;
 
 @Injectable()
 export class UserService {
-  
-  SERVER_URL="http://localhost:8080/gem/";
+
+  SERVER_URL="http://localhost/gem/";
   public static user={};
   private users = {
     nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
