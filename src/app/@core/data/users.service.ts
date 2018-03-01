@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/observable/of';
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 
@@ -10,8 +10,8 @@ let counter = 0;
 @Injectable()
 export class UserService {
 
-  SERVER_URL="http://localhost/gem/";
-  public static user={};
+  SERVER_URL = 'http://localhost/gem/';
+  public static user= {};
   private users = {
     nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
     eva: { name: 'Eva Moor', picture: 'assets/images/eva.png' },
@@ -23,10 +23,9 @@ export class UserService {
 
   private userArray: any[];
 
-  constructor(private http:Http,private jsonp:Jsonp) {
+  constructor(private http: Http) {
     // this.userArray = Object.values(this.users);
   }
-  
 
   getUsers(): Observable<any> {
     return Observable.of(this.users);
@@ -41,9 +40,9 @@ export class UserService {
     return Observable.of(this.userArray[counter]);
   }
 
-  login(){
-    return this.http.get(this.SERVER_URL,{params:{purpose:"login"}})
-    .map((response:Response)=>response.json());
+  login() {
+    return this.http.get(this.SERVER_URL, {params: {purpose: 'login'}})
+    .map((response: Response) => response.json());
   }
 
 }

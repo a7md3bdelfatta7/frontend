@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 
 @Component({
-  selector: 'gem-app',
+  selector: 'ngx-gem-app',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
