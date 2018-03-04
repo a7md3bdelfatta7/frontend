@@ -14,6 +14,8 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 })
 export class AddVisitComponent {
 
+  visit={hallName:'',time:''};
+
   constructor(private service: SmartTableService) {
 
   }

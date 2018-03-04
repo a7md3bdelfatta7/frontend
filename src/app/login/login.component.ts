@@ -16,15 +16,22 @@ export class LoginComponent implements OnInit {
   user= {email: '', password: '', rememberMe: true};
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {
+     
+   }
 
   ngOnInit() {
-      // this.themeService.changeTheme("default");
+    console.log("on Init");
+      if(UserService.loggedIn==true){
+        this.router.navigateByUrl('/page');
+      }
   }
 
   login= function(){
       this.userService.login().subscribe((data) => {
+        UserService.loggedIn=true;
         UserService.user = data;
+        this.userService.saveUserData();        
         this.router.navigateByUrl('/page');
       });
   }
