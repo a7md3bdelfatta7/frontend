@@ -14,10 +14,24 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 })
 export class AddVisitComponent {
 
-  visit={hallName:'',time:''};
+  visit = { hallName:String, time:'', description:''};
+  file: File;
+
 
   constructor(private service: SmartTableService) {
+    
+  }
 
+  addVisit() {
+    console.log(this.visit);
+  }
+
+  onChange(event: EventTarget) {
+    let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    let files: FileList = target.files;
+    this.file = files[0];
+    console.log(this.file);
   }
 
 
