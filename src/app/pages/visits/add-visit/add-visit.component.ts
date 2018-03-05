@@ -18,7 +18,7 @@ import 'rxjs/add/operator/catch'
 export class AddVisitComponent {
 
   visit = { hallName: '', time: '', description: '' };
-  file: File;
+  fileToUpload: File = null;
 
 
   constructor(private service: SmartTableService, private http: Http) {
@@ -29,29 +29,29 @@ export class AddVisitComponent {
     console.log(this.visit);
   }
 
-  onChange(event: EventTarget) {
-    let eventObj: MSInputMethodContext = <MSInputMethodContext>event;
-    let target: HTMLInputElement = <HTMLInputElement>eventObj.target;
-    let files: FileList = target.files;
-    let fileToUpload = files[0];
-    console.log(fileToUpload);
-    let headers = new Headers();
-    /** No need to include Content-Type in Angular 4 */
-    headers.append('Content-Type', 'multipart/form-data');
+
+  onChange(files: FileList) {
+    this.fileToUpload = files.item(0);
+    console.log(this.fileToUpload);
+    this.postFile(this.fileToUpload);
+  }
+
+  postFile(fileToUpload: File) {
+
+    const headers = new Headers();
     headers.append('Accept', 'application/json');
 
     const endpoint = 'http://localhost/gem/';
     const formData: FormData = new FormData();
     formData.append('fileKey', fileToUpload, fileToUpload.name);
     return this.http
-      .get(endpoint, {params: {purpose: 'upload_file',fileKey:fileToUpload,fileName:fileToUpload.name}})
+      .post(endpoint, formData, { headers: headers })
       .map(() => { return true; })
-      .catch(error => Observable.throw(error))
       .subscribe(
-        data => console.log('success'),
-        error => console.log(error)
+      data => console.log('success'),
+      error => console.log(error)
       );
-  }
+}
 
 
 }

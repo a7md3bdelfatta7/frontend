@@ -27,7 +27,7 @@
           <div class="form-group row">
             <label for="visitDescription" class="col-sm-3 col-form-label">Visit banner</label>
             <div class="col-sm-9">
-              <input name="visitBannner" (change)="onChange($event)" type="file" class="form-control" id="visitbanner">
+              <input name="visitBannner" id="file" (change)="onChange($event.target.files)" type="file" class="form-control" id="visitbanner">
             </div>
           </div>
 
