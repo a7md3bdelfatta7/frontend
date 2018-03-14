@@ -5,16 +5,16 @@ export const DEFAULT_THEME = {
 
     // Safari fix
     temperature: [
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
-      '#42db7d',
+      '#a0dcd8',
+      '#a0dcd8',
+      '#a0dcd8',
+      '#a0dcd8',
+      '#a0dcd8',
     ],
 
     solar: {
-      gradientLeft: '#42db7d',
-      gradientRight: '#42db7d',
+      gradientLeft: '#a0dcd8',
+      gradientRight: '#a0dcd8',
       shadowColor: 'rgba(0, 0, 0, 0)',
       radius: ['80%', '90%'],
     },
