@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-gem-app',
-  template: '<router-outlet></router-outlet>',
+  template: '<signup-form></signup-form><br/><br/><router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
 

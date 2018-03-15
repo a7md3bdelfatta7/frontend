@@ -16,10 +16,11 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LogoutComponent],
+  declarations: [AppComponent, LoginComponent, LogoutComponent, SignupComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
