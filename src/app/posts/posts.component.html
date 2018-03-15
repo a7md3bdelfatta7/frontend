@@ -1,0 +1,17 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card style="height:98%;">
+      <nb-card-body>
+
+          <ul class="list-group">
+            <li
+            *ngFor="let post of posts"
+            class="list-group-item">
+            {{post.title}}
+            </li>
+          </ul>
+
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

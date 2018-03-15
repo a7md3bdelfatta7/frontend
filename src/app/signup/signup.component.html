@@ -1,0 +1,49 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card style="height:98%;">
+      <nb-card-body>
+        <div class='container' style="height:100%;">
+          <div class='row' style="height:100%;">
+            <div class="flex-centered col-xl-5 col-lg-6 col-md-8 col-sm-12">
+              <img style="width:100%;" src="assets/images/gem_word_old.png">
+            </div>
+            <div class="flex-centered 5 col-lg-6 col-md-8 col-sm-12">
+              <form [formGroup]="form">
+                <div formGroupName="account">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <div *ngIf="username.pending">Checking for uniqueness...</div>
+                    <input formControlName="username" class="form-control" type="text" id="username">
+                    <div class="alert alert-danger" *ngIf="username.invalid">
+                      <div *ngIf="username.errors.required">Username is required !</div>
+                      <div *ngIf="username.errors.minlength">minimum length is {{username.errors.minlength.requiredLength}}</div>
+                      <div *ngIf="username.errors.cannotContainSpace">Username can not contain space . </div>
+                      <div *ngIf="username.errors.shouldBeUnique">Username should be unique. </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">password</label>
+                    <input formControlName="password" class="form-control" type="text" id="password">
+                  </div>
+                </div>
+
+                <input type="text" class="form-control" (keyup.enter)="addTopic(topic)" #topic>
+                
+                <ul class="list-group">
+                  <li
+                  *ngFor="let topic of topics.controls"
+                   class="list-group-item">
+                    {{topic.value}}
+                  </li>
+                </ul>
+
+                <input type="submit" class='btn btn-primary'>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

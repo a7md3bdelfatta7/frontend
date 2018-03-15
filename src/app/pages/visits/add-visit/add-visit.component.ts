@@ -18,7 +18,7 @@ import 'rxjs/add/operator/catch'
 export class AddVisitComponent {
 
   visit = { hallName: '', time: '', description: '' };
-  fileToUpload: File = null;
+  filesToUpload: Array<File> = [];
 
 
   constructor(private service: SmartTableService, private http: Http) {
@@ -26,24 +26,31 @@ export class AddVisitComponent {
   }
 
   addVisit() {
-    console.log(this.visit);
+    this.postFile();
   }
 
 
-  onChange(files: FileList) {
-    this.fileToUpload = files.item(0);
-    console.log(this.fileToUpload);
-    this.postFile(this.fileToUpload);
+  onChange(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
   }
 
-  postFile(fileToUpload: File) {
+  postFile() {
 
     const headers = new Headers();
     headers.append('Accept', 'application/json');
-
     const endpoint = 'http://localhost/gem/';
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
+    
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    console.log(files);
+
+    for(let i =0; i < files.length; i++){
+      formData.append("uploads[]", files[i], files[i]['name']);
+    }
+
+    formData.append("visit",JSON.stringify(this.visit));
+    formData.append("purpose","add_visit");
+    
     return this.http
       .post(endpoint, formData, { headers: headers })
       .map(() => { return true; })
